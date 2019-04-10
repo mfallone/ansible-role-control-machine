@@ -1,0 +1,5 @@
+---
+# file: ansible-role-control-machine/tasks/main.yaml
+- include: generate-ansible-ssh-key.yaml
+- include_role: 
+    name: ansible-role-common

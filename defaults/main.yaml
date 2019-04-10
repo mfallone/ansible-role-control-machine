@@ -1,0 +1,6 @@
+---
+# file: ansible-role-control-machine/defaults/main.yaml
+ansible_key_file_name: ansible_id_ecdsa
+base_path: "{{ ansible_env['PWD'] }}"
+ansible_new_user: ansible-user
+ansible_new_user_group: ansible-user

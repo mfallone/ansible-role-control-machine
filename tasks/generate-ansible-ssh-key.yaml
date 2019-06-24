@@ -2,12 +2,12 @@
 # file: ansible-role-control-machine/generate-ansible-ssh-key.yaml
 - name: Generate ssh key dir (local)
   file:
-    path: "{{ ansible_key_path }}"
+    path: "{{ ansible_local_ssh_keypath }}"
     state: directory
     mode: 0700
 
 - name: Generate ssh key
-  command: ssh-keygen -q -t ecdsa -b 521 -f {{ ansible_key_path }}/{{ ansible_key_file_name }} -C "" -N ""
+  command: ssh-keygen -q -t ecdsa -b 521 -f {{ ansible_key_file }} -C "" -N ""
   args:
-    creates:  "{{ ansible_key_path }}/{{ ansible_key_file_name }}"
+    creates:  "{{ ansible_key_file }}"
   ignore_errors: true

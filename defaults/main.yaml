@@ -2,6 +2,12 @@
 # file: ansible-role-control-machine/defaults/main.yaml
 ansible_key_file_name: ansible_id_ecdsa
 base_path: "{{ ansible_env['PWD'] }}"
-ansible_key_path: "{{base_path }}/.ssh"
+ansible_local_ssh_keypath: "./.ssh"
+ansible_key_file: "{{ ansible_local_ssh_keypath }}/{{ ansible_key_file_name }}"
+ansible_pub_key: "{{ ansible_local_ssh_keypath }}/{{ ansible_key_file_name }}.pub"
+
 ansible_new_user: ansible-user
 ansible_new_user_group: ansible-user
+
+ansible_role_common_repo: ""
+ansible_role_common_path: "./roles/ansible-role-common"

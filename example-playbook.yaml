@@ -1,0 +1,18 @@
+---
+# file: 00-setup-control-machine-playbook.yaml
+- hosts: localhost
+  pre_tasks:
+    - name: Check prerequisites
+      stat:
+        path: ./roles/ansible-role-common
+      register: file_details
+    
+    - name: Git Clone ansible-role-common repository
+      git:
+        repo: "{{ ansible_role_common_repo }}"
+        dest: ./roles/ansible-role-common
+      ignore_errors: true
+      when: file_details.stat.exists == False
+  roles:
+    - ansible-role-control-machine
+
